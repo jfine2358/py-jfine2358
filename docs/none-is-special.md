@@ -250,7 +250,7 @@ TypeError: type 'NoneType' is not an acceptable base type
 
 ```
 
-### `None` can't be subclassed
+### The compiler skips if-`None` code
 
 This is advanced, and belongs in the next page.
 
@@ -259,6 +259,8 @@ compiler won't bother to write bytecode instructions when an
 if-statement obviously evaluates false. That might surprise some
 folks.
 
+There are other, similar cases. Such as `True`, `False` and literal
+constants, such as `0` and `1`.
 
 ## Thanks
 
@@ -266,6 +268,9 @@ This page arose from a thread [2] on the python-ideas list. I thank
 Steve Dower, Paul Moore, Steve D'Aprano, Chris Barker, David Mertz,
 Jörn Heissler, Anthony Risinger, Michael Selik, Chris Angelico for
 their contributions and encouragement.
+
+Apologies for anyone I've missed. Comments either on python-ideas, or
+perhaps better, by raising an issue on github.
 
 
 ## Epigraphs
