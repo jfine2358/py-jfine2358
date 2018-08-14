@@ -277,7 +277,7 @@ perhaps better, by raising an issue on github.
 
 > But the most wonderful thing about Tiggers is I'm the only one.
 
-[Richard Morton Sherman](http://disney.wikia.com/wiki/The_Wonderful_Thing_About_Tiggers)
+[Robert Bernard Sherman](http://disney.wikia.com/wiki/The_Wonderful_Thing_About_Tiggers)
 
 > [A cynic is] a man who knows the price of everything and the value of nothing.
 
