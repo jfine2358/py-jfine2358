@@ -94,29 +94,21 @@ tuple.
 
 ```
 
-### `None` is a constant
+### `None` is a Singleton
 
-The literal `42` has the same value everywhere. The value of `42`
-can't be changed. It's always the number 42.
+A "singleton" is a computer science name for type for which there is one and only one instance.
 
-```python
->>> 42 = 0
-SyntaxError: can't assign to literal
-```
+So everywhere you type "None" in python, you will get the very same object -- not just the same value.
 
-By the way, don't confuse this with
-```python
->>> 42 == 0
-False
-```
+Python enforces this by making "None" a keyword -- a special word that can not be used as a name. If you try to bind the name "None" to something else, you get a Syntax Error:
 
-Similarly, `None` is available everywhere, and cannot be changed.
 ```python
 >>> None = 0
 SyntaxError: can't assign to keyword
 ```
 
-And similarly, neither can `True` and `False`.
+And similarly, `True` and `False`.
+
 ```python
 >>> True = 1
 SyntaxError: can't assign to keyword
@@ -124,8 +116,38 @@ SyntaxError: can't assign to keyword
 SyntaxError: can't assign to keyword
 ```
 
-In your code, `None` will always have the same value. (And similarly
-`True` and `False`.)  Just at `42` always has the same value.
+In your code, `None` (and `True` and `False`) will always have the same value. This means that you can (and should) use object comparison (`is`) to test if a name is None:
+
+```python
+>>> x = None
+>>> y = 42
+>>> x is None
+True
+>>> y is None
+False
+```
+
+Note that `x == None` will usually work, but the equality operator (`==`) can be overloaded (redefined) by a custom class, and then `x == None` may not give you the answer you expect. An example of this is numpy arrays, which overload `==` to mean "element-wise" equality.
+
+So for checking for None and True and False, you should always use `is` rather than `==`. 
+
+Careful! using `is` for comparison is almost always the wrong thing in any other context, even though it may sometimes appear to work!
+
+```python
+>>> x = 3
+>>> y = 3
+>>> x is y
+True
+```
+That seemed to work, didn't it? But what about:
+
+```python
+>>> x = 1234567
+>>> y = 1234567
+>>> x is y
+False
+```
+`is` only appeared to work because cPython re-uses (interns) small integers, so that there are not many copies of integers with the same value. But it only works with small integers, and may not work the same way with other Python implementations or future versions.
 
 
 ### `None` is the default return value
